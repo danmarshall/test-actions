@@ -26,6 +26,19 @@ jobs:
         if: github.event.action != 'closed'
         run: npm ci
 
+      - name: Update Astro config for PR preview
+        if: github.event.action != 'closed'
+        run: |
+          cat > astro.config.mjs << 'EOF'
+          import { defineConfig } from 'astro/config';
+
+          // https://astro.build/config
+          export default defineConfig({
+            site: 'https://danmarshall.github.io',
+            base: '/test-actions/pr-preview/pr-${{ github.event.pull_request.number }}',
+          });
+          EOF
+
       - name: Build Astro site
         if: github.event.action != 'closed'
         run: npm run build
