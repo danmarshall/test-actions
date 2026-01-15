@@ -3,17 +3,27 @@ a place to test github actions
 
 ## Astro App with GitHub Pages Deployment
 
-> **📋 First Time Setup?** See [SETUP.md](SETUP.md) for detailed instructions on configuring your repository settings.
+This repository demonstrates deploying an Astro site to GitHub Pages with PR preview functionality.
 
-This repository contains a simple Astro application that demonstrates:
-- A layout template that says "hello <slot>"
-- A component that fills the slot with "World"
-- GitHub Actions workflows for automated deployment
+> **📋 First Time Setup?** See [SETUP.md](SETUP.md) for detailed instructions on configuring your repository settings.
 
 ### Features
 
-1. **Main Branch Deployment**: Automatically deploys to GitHub Pages when changes are pushed to the main branch
-2. **PR Preview Deployments**: Each pull request gets its own preview deployment, allowing you to browse the site on any device before merging
+- **Simple Astro app**: A layout template that says "hello <slot>" with a component that fills the slot with "World"
+- **Main deployment**: Automatically deploys to GitHub Pages when changes are pushed to the main branch
+- **PR preview deployments**: Each pull request gets its own preview deployment, allowing you to browse the site on any device before merging
+
+### Workflow Files
+
+**`.github/workflows/pages.yml`** - Main deployment workflow:
+- Builds and deploys the Astro site on pushes to the `main` branch
+- Can be manually triggered from the Actions tab
+- Deploys to `https://danmarshall.github.io/test-actions/`
+
+**`.github/workflows/pr-preview.yml`** - PR preview workflow:
+- Creates a preview deployment for each PR at `/test-actions/pr-[NUMBER]/`
+- Comments on PR with the preview URL (perfect for testing on your phone!)
+- Automatically cleans up when the PR is closed
 
 ### Local Development
 

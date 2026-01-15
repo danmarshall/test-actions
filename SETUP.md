@@ -24,15 +24,15 @@ You need to ensure GitHub Actions has the right permissions:
 
 ## Step 3: Merge This PR
 
-This first PR sets up the Astro application and GitHub Actions workflows:
+This PR adds PR preview functionality to the existing Astro site:
 - Merge this PR to the `main` branch
-- The main deployment workflow will automatically run
-- After a few minutes, your site will be live at: `https://danmarshall.github.io/test-actions/`
+- The PR preview workflow will be available for future pull requests
+- Your main site is already live at: `https://danmarshall.github.io/test-actions/`
 
 ## Step 4: Test PR Previews (After Merging)
 
 Once this PR is merged:
-1. Create a new branch and make any change (e.g., modify the text in `src/pages/index.astro`)
+1. Create a new branch and make any change (e.g., modify the text in `src/pages/index.astro` or `src/layouts/Layout.astro`)
 2. Open a pull request
 3. The PR preview workflow will:
    - Build the site with a PR-specific path
@@ -55,17 +55,17 @@ Once this PR is merged:
 
 ### If PR preview fails:
 
-**First PR Note**: The PR preview workflow uses the `gh-pages` branch which is created by the first successful deployment to main. So PR previews will only work after you've merged this initial PR and the main deployment has run successfully.
+**gh-pages Branch**: The PR preview workflow uses the `gh-pages` branch which already exists from the main site deployment. PR previews should work right away once this PR is merged.
 
 **Token Permissions**: The workflow uses `GITHUB_TOKEN` which should have sufficient permissions if you've configured "Read and write permissions" in Actions settings.
 
 ## How It Works
 
-### Main Deployment (`deploy.yml`)
+### Main Deployment (`pages.yml`)
 - Triggers on push to `main` branch
 - Builds the Astro site with base path `/test-actions`
 - Deploys to GitHub Pages using the official `actions/deploy-pages` action
-- Creates/updates the `gh-pages` branch automatically
+- Updates the `gh-pages` branch automatically
 
 ### PR Preview Deployment (`pr-preview.yml`)
 - Triggers on PR open, update, or close
