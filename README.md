@@ -15,25 +15,27 @@ The workflow is located at `.github/workflows/pages.yml` and will:
 
 ### Prerequisites
 
-This workflow expects an Astro project with:
-- `package.json` with a `build` script
-- Astro configured to output to the `./dist` directory
+**Note:** This workflow requires Astro project files to be present in the repository.
+
+The workflow expects:
+- `package.json` with Astro dependency and a `build` script
+- `astro.config.mjs` configured with the correct site and base
+- Astro source files in the `src/` directory
 - Node.js dependencies managed via npm
 
 ### Setup
 
-To enable GitHub Pages for this repository:
-1. Go to repository Settings → Pages
-2. Under "Build and deployment", select "GitHub Actions" as the source
-3. The workflow will automatically deploy on the next push to main
+1. **Add Astro Project Files**: Ensure your repository contains the Astro project structure (see Prerequisites above)
 
-### Astro Configuration
+2. **Configure Astro**: Make sure your `astro.config.mjs` includes:
+   ```javascript
+   export default defineConfig({
+     site: 'https://<username>.github.io',
+     base: '/<repository-name>',
+   });
+   ```
 
-Make sure your `astro.config.mjs` is configured with the correct site and base:
-
-```javascript
-export default defineConfig({
-  site: 'https://danmarshall.github.io',
-  base: '/test-actions',
-});
-```
+3. **Enable GitHub Pages**:
+   - Go to repository Settings → Pages
+   - Under "Build and deployment", select "GitHub Actions" as the source
+   - The workflow will automatically deploy on the next push to main
