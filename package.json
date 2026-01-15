@@ -1,0 +1,14 @@
+{
+  "name": "test-actions",
+  "version": "1.0.0",
+  "description": "a place to test github actions",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.16.9"
+  }
+}
