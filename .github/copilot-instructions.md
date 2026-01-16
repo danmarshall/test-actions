@@ -25,8 +25,9 @@ https://danmarshall.github.io/test-actions/pr-preview/pr-5
   ```markdown
   ## 🔍 PR Preview
   
-  View the preview of this PR at: https://danmarshall.github.io/test-actions/pr-preview/pr-{PR_NUMBER}
+  View the preview of this PR at: https://danmarshall.github.io/test-actions/pr-preview/pr-5
   ```
+  (Replace `pr-5` with the actual PR number)
 
 ### Note
 
